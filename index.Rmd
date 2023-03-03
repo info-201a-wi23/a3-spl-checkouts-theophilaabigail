@@ -3,84 +3,96 @@ title: "A3: SPL Library Checkouts"
 output: html_document
 ---
 
+```{r}
+library(tidyverse)
+library(dplyr)
+library(broom)
+library(ggplot2)
+```
+
 ### Introduction
 
-An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
+We will be analyzing checkout data from the Seattle Public Library to understand borrowing patterns and identify popular books and materials. This information can be useful for promoting literacy and access to knowledge, as well as informing marketing strategies for publishers and authors. It can also provide insights into broader cultural and social trends.
+```{r}
+data <- read.csv("/Users/theophilasetiawan/Downloads/2017-2023-10-Checkouts-SPL-Data.csv")
+```
+
+```{r}
+head(data)
+```
+```{r}
+nrow(data)
+```
+
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
-
-These will likely be calculated using your DPLYR skills, answering questions such as:
-
-- What is the average number of checkouts for each item?
-- What is the month or year with the most/least checkouts for a book that you're interested in?
-- What is the month or year with the most/least checkouts for ebooks?
-- How has the number of print book checkouts changed over time?
-
-Feel free to calculate and report values that you find relevant.
+```{r}
+summary <- source("/Users/theophilasetiawan/Documents/INFO 201 (main)/Info201code/a3-spl-checkouts-theophilaabigail/summary.R")
+```
 
 ### The Dataset
 
 - Who collected/published the data?  
+  The establishment that collected and published the data is The Seattle Public Library or SPL.
+  
 - What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
+  In the original data, there are 42 million rows and 12 columns. The columns represent the books' unique characteristics,   which are UsageClass (denotes if item is “physical” or “digital”), CheckoutType (denotes the vendor tool used to check  
+  out the item), MaterialType (describes the type of item checked out (examples: book, song movie, music, magazine)),  
+  CheckoutYear (the 4-digit year of checkou), CheckoutMonth (the month of checkout), Checkouts (a count of the number of  
+  times the title was checked out within the “Checkout Month"), Title, ISBN, Creator, Subjects, Publisher, and 
+  PublicationYear.
+  
 - How was the data collected or generated?  
+  The data was collected based on the check outs done by the customers at The Seattle Public Library.
+  
 - Why was the data collected?  
+  Why the data was collected was not mentioned.
+  
 - What, if any, ethical questions do you need to consider when working with this data?  
+  There are not any apparent questions of power or ethical questions to think about with the data.
+  
 - What are possible limitations or problems with this data?   (at least 200 words)
-
+  Working with the library dataset we are working with can pose various limitations and problems. One issue is incomplete or missing data. The dataset may lack critical information about the purchases, such as the cost of each item or the vendor from which the library procured it. This can make it challenging to draw meaningful insights from the data and understand the library's spending habits accurately.
+  
+  There are a lot of missing columns which indicate incompleteness of data and could sometimes be a challenge when trying to make insights, however this could be handled by adding codes that do not take into accounts empty columns. The dataset could also be inconsistent in formatting some values, which could be hard to work with since some values will get ignored when filtered. For example, some values in the publication year   column is written inside brackets, but some are not. If filtered, these values have potential to be excluded from the analysis if the dataset is   not cleaned beforehand. To overcome these challenges, data cleaning is essential. Data cleaning involves identifying and correcting inconsistencies and errors in the data. This process can be time-consuming and requires expertise in data cleaning techniques. However, it is a crucial step in preparing the data for analysis, as it ensures that the data is   accurate and reliable.
+  
+  
 
 ### First Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+The first chart visualizes how the number of checkouts of digital and physical media progress throughout the years. I decided to use a line graph because there are only 2 values to be compared. As can be seen from the chart, in the earlier years, customer of the library preferred physical media as there is a big difference in total number of purchases in around 2017 and 2018. As it neared 2020, more people started buying more digital media that the number of purchases surpassed physical media in around 2019. Since then, the number of digital media consumers were significantly higher than that of physical media, although both showed an upward trend up until 2022, where the number of purchases of both media dropped. The drop shown in the graph could be due to the dataset's incompleteness of data from 2022 to the present.
 
-The first chart that you will create and include will show the trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+I included this chart because I was interested in finding out if people prefer digital or physical media in this age of digitalization.
 
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
+```{r}
+chart1 <- source("/Users/theophilasetiawan/Documents/INFO 201 (main)/Info201code/a3-spl-checkouts-theophilaabigail/Chart_1_Physical_Digital.R")
 
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R")}
+chart1
 ```
 
 ### Second Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+This second chart includes 10 bar graphs that show the trend of the number of purchases of 10 top publishers throughout the years. I decided to use multiple bar graphs with lines indicating the trends because I believe a single line graph could be too overwhelming. According to the graphs, all the publishers had had high number of sales since the beginning of 2017, except for Graphix which number of sales increased rapidly nearing 2022. There seems to be a drop in sales for all the publishers in 2020, which could be due to economic crisis that occurred because of the COVID-19 outbreak. However, an upward trend could be seen in some of the graphs, which means that people are starting to purchase books again after the pandemic where people are going back to living normally. The low number seen on the graph around 2022 to the present could be due to the dataset's incompleteness of data.
 
-The second chart that you will create and include will show another trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+I included this chart because I wanted to see if the top overall publishers had stable number of sales throughout the years, and I also wanted to know how much COVID-19 affected the number of sales of books. 
 
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
+```{r}
+chart2 <- source("/Users/theophilasetiawan/Documents/INFO 201 (main)/Info201code/a3-spl-checkouts-theophilaabigail/Chart_2_top_publishers.R")
 
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+chart2
 ```
 
-### Your Choice
+### Chart 3
 
-The last chart is up to you. It could be a line plot, scatter plot, histogram, bar plot, stacked bar plot, and more. Here are some requirements to help guide your design:
+The histogram below shows the overall top 5 creators/authors from 2017 to the present. It is interesting how I could recognize all 5 creators/authors because they all produce the same genre of books, which is children's books/cartoons. From the graph, we could learn that a significantly big portion of sales of the library is sales of children's books. 
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
+I included this graph because I wanted to know if my favorite author(s) are among the top 5 creator/authors, but turns out the top 5 authors are the authors of the books I used to read as a child.
 
-Here's an example of how to run an R script inside an RMarkdown file:
+```{r}
+chart3 <- source("/Users/theophilasetiawan/Documents/INFO 201 (main)/Info201code/a3-spl-checkouts-theophilaabigail/Chart_3_top_creators.R")
 
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+chart3
 ```
 
 
