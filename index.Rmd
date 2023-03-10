@@ -14,7 +14,7 @@ library(ggplot2)
 
 We will be analyzing checkout data from the Seattle Public Library to understand borrowing patterns and identify popular books and materials. This information can be useful for promoting literacy and access to knowledge, as well as informing marketing strategies for publishers and authors. It can also provide insights into broader cultural and social trends.
 ```{r}
-data <- read.csv("/Users/theophilasetiawan/Downloads/2017-2023-10-Checkouts-SPL-Data.csv")
+data <- read.csv("/Users/theophilasetiawan/Documents/INFO 201 (main)/Info201code/a3-spl-checkouts-theophilaabigail/2017-2023-10-Checkouts-SPL-Data.csv")
 ```
 
 ```{r}
@@ -27,10 +27,21 @@ nrow(data)
 
 ### Summary Information
 
-```{r}
-summary <- source("/Users/theophilasetiawan/Documents/INFO 201 (main)/Info201code/a3-spl-checkouts-theophilaabigail/summary.R")
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+source("/Users/theophilasetiawan/Documents/INFO 201 (main)/Info201code/a3-spl-checkouts-theophilaabigail/summary.R")
+
+book <- most_checked_out_material_type[1]
+checkout <- most_checked_out_book[1]
+year1 <- most_checked_out_year[1]
+year2 <- year_most_usage_class[1]
+top1 <- top_1
+top2 <- top_2
+top3 <- top_3
+
+
+cat("The most checked out material type is '", book, "', which surprised me a little because I thought it would be EBOOK. The most checked out book is '", checkout, "', and I personally have never heard of that book. I wanted to know if the top sales book would be a book I know or one of my favorite, but it was not. The year in which the most checked out material type is books is '", year1, "', which is to be expected since in '", year1, "' digital books were not too popular yet. The year in which the most usage class checked out is digital is '", year2, "', which makes sense because more people are going digital these days. The top 3 publishers based on the most number of check outs are '", top1, "', '", top2, "', '", top3, "', and I have only heard of HarperCollins.")
 ```
-The most checked out material type is BOOK, which surprised me a little because I thought it would be EBOOK. The most checked out book is SPL HotSpot : connecting Seattle / [distributed by T-Mobile], and I personally have never heard of that book. I wanted to know if the top sales book would be a book I know or one of my favorite, but it was not. The year in which the most checked out material type is books is 2018, which is to be expected since in 2018 digital books were not too popular yet. The year in which the most usage class checked out is digital is 2022, which makes sense because more people are going digital these days. The top 3 publishers based on the most number of check outs are Random House, Inc. , Books on Tape , and HarperCollins Publishers Inc., and I have only heard of HarperCollins.
+
 
 ### The Dataset
 
@@ -66,9 +77,8 @@ The first chart visualizes how the number of checkouts of digital and physical m
 
 I included this chart because I was interested in finding out if people prefer digital or physical media in this age of digitalization.
 
-```{r}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, results='hide'}
 chart1 <- source("/Users/theophilasetiawan/Documents/INFO 201 (main)/Info201code/a3-spl-checkouts-theophilaabigail/Chart_1_Physical_Digital.R")
-
 chart1
 ```
 
@@ -78,8 +88,8 @@ This second chart includes 10 bar graphs that show the trend of the number of pu
 
 I included this chart because I wanted to see if the top overall publishers had stable number of sales throughout the years, and I also wanted to know how much COVID-19 affected the number of sales of books. 
 
-```{r}
-chart2 <- source("/Users/theophilasetiawan/Documents/INFO 201 (main)/Info201code/a3-spl-checkouts-theophilaabigail/Chart_2_top_publishers.R")
+```{r, echo = FALSE, warning = FALSE, message = FALSE, results='hide'}
+chart2 <- suppressMessages(source("/Users/theophilasetiawan/Documents/INFO 201 (main)/Info201code/a3-spl-checkouts-theophilaabigail/Chart_2_top_publishers.R"))
 
 chart2
 ```
@@ -90,7 +100,7 @@ The histogram below shows the overall top 5 creators/authors from 2017 to the pr
 
 I included this graph because I wanted to know if my favorite author(s) are among the top 5 creator/authors, but turns out the top 5 authors are the authors of the books I used to read as a child.
 
-```{r}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, results='hide'}
 chart3 <- source("/Users/theophilasetiawan/Documents/INFO 201 (main)/Info201code/a3-spl-checkouts-theophilaabigail/Chart_3_top_creators.R")
 
 chart3

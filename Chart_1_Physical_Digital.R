@@ -1,7 +1,7 @@
 library(ggplot2)
 library(dplyr)
 
-df <- read.csv("/Users/theophilasetiawan/Downloads/2017-2023-10-Checkouts-SPL-Data.csv")
+df <- read.csv("/Users/theophilasetiawan/Documents/INFO 201 (main)/Info201code/a3-spl-checkouts-theophilaabigail/2017-2023-10-Checkouts-SPL-Data.csv")
 
 # filter the data frame to include only physical and digital UsageClass
 physical_digital <- filter(df, UsageClass %in% c("Physical", "Digital"))

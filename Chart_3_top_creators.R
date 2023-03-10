@@ -2,7 +2,7 @@ library(dplyr)
 library(ggplot2)
 
 # load the dataset
-df3 <- read.csv("/Users/theophilasetiawan/Downloads/2017-2023-10-Checkouts-SPL-Data.csv")
+df <- read.csv("/Users/theophilasetiawan/Documents/INFO 201 (main)/Info201code/a3-spl-checkouts-theophilaabigail/2017-2023-10-Checkouts-SPL-Data.csv")
 
 # filter books only
 books3 <- filter(df, MaterialType == "BOOK")
