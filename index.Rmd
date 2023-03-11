@@ -38,15 +38,9 @@ top1 <- top_1
 top2 <- top_2
 top3 <- top_3
 
-
-cat("The most checked out material type is '", book, "', which surprised me a little because I thought it would be EBOOK")
-cat("The most checked out book is '", checkout, "', and I personally have never heard of that book.")
-cat("I wanted to know if the top sales book would be a book I know or one of my favorite, but it was not.")
-cat("The year in which the most checked out material type is books is '", year1, "', which is to be expected since in '", year1, "' digital books were not too popular yet.")
-cat("The year in which the most usage class checked out is digital is '", year2, "', which makes sense because more people are going digital these days.")
-cat("The top 3 publishers based on the most number of check outs are '", top1, "', '", top2, "', '", top3, "', and I have only heard of HarperCollins.")
 ```
 
+The most checked out material type is `r book` which surprised me a little because I thought it would be EBOOK. The most checked out book is `r checkout` and I personally have never heard of that book. I wanted to know if the top sales book would be a book I know or one of my favorite, but it was not. The year in which the most checked out material type is books is `r year1` which is to be expected since in `r year1` digital books were not too popular yet. The year in which the most usage class checked out is digital is `r year2` which makes sense because more people are going digital these days. The top 3 publishers based on the most number of check outs are `r top1` , `r top2` , and `r top3` and I have only heard of HarperCollins.
 
 ### The Dataset
 
